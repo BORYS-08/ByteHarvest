@@ -1,0 +1,107 @@
+/* ============================================================
+   glass.css — Light Agricultural Surface Utilities
+   ============================================================ */
+
+
+/* ============================================================
+   BASE GLASS PANEL
+   ============================================================ */
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.92);
+
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+
+  border: 1px solid var(--border-base);
+
+  border-radius: 8px;
+
+  box-shadow:
+    0 2px 10px rgba(38, 50, 56, 0.08);
+}
+
+
+/* ============================================================
+   HOVER ELEVATION
+   ============================================================ */
+
+.glass-panel-hover {
+  transition:
+    background-color 0.2s ease,
+    border-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.glass-panel-hover:hover {
+  background: rgba(255, 255, 255, 0.98);
+
+  border-color: var(--border-mid);
+
+  box-shadow:
+    0 5px 16px rgba(38, 50, 56, 0.10);
+
+  transform: translateY(-1px);
+}
+
+
+/* ============================================================
+   FORM INPUTS INSIDE GLASS PANELS
+   ============================================================ */
+
+.glass-input {
+  background: var(--bg-surface);
+
+  border: 1px solid var(--border-mid);
+
+  border-radius: 6px;
+
+  color: var(--text-primary);
+
+  font-size: 16px;
+
+  min-height: 48px;
+
+  padding: 10px 12px;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.glass-input:focus {
+  outline: none;
+
+  border-color: var(--accent-green);
+
+  box-shadow:
+    0 0 0 3px var(--accent-green-dim);
+}
+
+
+/* ============================================================
+   PLACEHOLDER
+   ============================================================ */
+
+.glass-input::placeholder {
+  color: var(--text-tertiary);
+}
+
+
+/* ============================================================
+   TEXTAREA
+   ============================================================ */
+
+.glass-input textarea {
+  resize: vertical;
+}
+
+
+/* ============================================================
+   TEXTAREA / INPUT HEIGHT OVERRIDE
+   ============================================================ */
+
+textarea.glass-input {
+  min-height: 120px;
+}

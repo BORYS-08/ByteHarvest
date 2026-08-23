@@ -1,0 +1,60 @@
+/* ============================================================
+   index.css — Core Base & Tailwind Entry Point
+   ============================================================ */
+
+@import "tailwindcss";
+@import "./styles/surfaces.css";
+@import "./styles/animations.css";
+@import "./styles/overrides.css";
+
+@layer base {
+  :root {
+    /* Canvas */
+    --bg-canvas:    #F7F9F3;
+    --bg-surface:   #FFFFFF;
+    --bg-raised:    #F1F5EE;
+    --bg-overlay:   #E8F0E5;
+
+    /* Borders */
+    --border-base:  rgba(38, 50, 56, 0.10);
+    --border-mid:   rgba(38, 50, 56, 0.16);
+    --border-hi:    rgba(38, 50, 56, 0.24);
+
+    /* Text */
+    --text-primary:   #263238;
+    --text-secondary: #546E7A;
+    --text-tertiary:  #78909C;
+
+    /* Accent — greens, used sparingly */
+    --accent-green:       #388E3C;
+    --accent-green-muted: rgba(56, 142, 60, 0.15);
+    --accent-green-dim:   rgba(56, 142, 60, 0.08);
+
+    /* Semantic */
+    --color-danger: #D84315;
+    --color-warn:   #F9A825;
+    --color-info:   #1976D2;
+    --color-ok:     #2E7D32;;
+  }
+
+  body {
+    background-color: var(--bg-canvas);
+    color: var(--text-primary);
+    font-family: 'Inter', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI',
+      Roboto, sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    -webkit-font-smoothing: antialiased;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  /* Selection */
+  ::selection {
+    background: rgba(56, 142, 60, 0.20);
+    color: var(--text-primary);
+  }
+}

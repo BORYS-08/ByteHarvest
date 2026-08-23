@@ -1,0 +1,72 @@
+/* ============================================================
+   animations.css — Keyframes & Animation Utility Classes
+   Only functional animations — no decorative glows.
+   ============================================================ */
+
+/* Scanner laser sweep: top → bottom */
+@keyframes laserSweep {
+  0%   { top: 0%;  opacity: 0.6; }
+  100% { top: 98%; opacity: 0.6; }
+}
+
+/* GIS radar sweep rotation */
+@keyframes radarRotate {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+/* Async content fade-in */
+@keyframes fadeSlideIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0);   }
+}
+
+/* Data bar fill from left */
+@keyframes barFill {
+  from { width: 0%; }
+  to   { width: var(--bar-width, 100%); }
+}
+
+/* Skeleton loading shimmer */
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+/* Spinner */
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* --- Utility Classes --- */
+
+.animate-laser {
+  animation: laserSweep 2.5s ease-in-out infinite alternate;
+}
+
+.animate-radar {
+  animation: radarRotate 8s linear infinite;
+}
+
+.animate-fade-in {
+  animation: fadeSlideIn 0.3s ease-out forwards;
+}
+
+.animate-bar-fill {
+  animation: barFill 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.animate-shimmer {
+  background: linear-gradient(
+    90deg,
+    var(--bg-surface) 25%,
+    var(--bg-raised)  50%,
+    var(--bg-surface) 75%
+  );
+  background-size: 200% 100%;
+  animation: shimmer 1.4s infinite;
+}
+
+.animate-spin-slow {
+  animation: spin 1s linear infinite;
+}
