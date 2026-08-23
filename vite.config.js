@@ -4,30 +4,43 @@ import tailwindcss from '@tailwindcss/vite'
 
 // https://vite.dev/config/
 export default defineConfig({
+  base: '/ByteHarvest/',
+
   plugins: [
     react(),
     tailwindcss(),
   ],
+
   build: {
     rollupOptions: {
       output: {
         manualChunks(id) {
           if (id.includes('node_modules')) {
-            if (id.includes('leaflet') || id.includes('react-leaflet')) {
-              return 'vendor-maps';
+            if (
+              id.includes('leaflet') ||
+              id.includes('react-leaflet')
+            ) {
+              return 'vendor-maps'
             }
+
             if (id.includes('react-icons')) {
-              return 'vendor-icons';
+              return 'vendor-icons'
             }
-            if (id.includes('react') || id.includes('react-dom') || id.includes('react-router-dom')) {
-              return 'vendor-react';
+
+            if (
+              id.includes('react') ||
+              id.includes('react-dom') ||
+              id.includes('react-router-dom')
+            ) {
+              return 'vendor-react'
             }
           }
         },
       },
     },
   },
+
   server: {
-    host: true
-  }
+    host: true,
+  },
 })
