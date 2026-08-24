@@ -1,44 +1,99 @@
 import React from 'react';
+
 import {
   BrowserRouter as Router,
   Routes,
   Route,
   Navigate,
-  useLocation,
 } from 'react-router-dom';
 
 import {
   AppProvider,
-  useApp,
 } from './context/AppContext';
 
-import { ScanProvider } from './context/ScanContext';
+import {
+  ScanProvider,
+} from './context/ScanContext';
 
-import { Navbar } from './components/common/Navbar';
+import {
+  Navbar,
+} from './components/common/Navbar';
 
-import { HomePage } from './pages/HomePage';
-import { LoginPage } from './pages/LoginPage';
-import { RegisterPage } from './pages/RegisterPage';
-import { ForgotPasswordPage } from './pages/ForgotPasswordPage';
-import { ProfilePage } from './pages/ProfilePage';
+import {
+  HomePage,
+} from './pages/HomePage';
 
-import { FarmerPage } from './pages/FarmerPage';
-import { FarmManagementPage } from './pages/FarmManagementPage';
-import { CropManagementPage } from './pages/CropManagementPage';
+import {
+  LoginPage,
+} from './pages/LoginPage';
 
-import { ExtensionPage } from './pages/ExtensionPage';
-import { ExpertPage } from './pages/ExpertPage';
-import { OfficialPage } from './pages/OfficialPage';
+import {
+  RegisterPage,
+} from './pages/RegisterPage';
 
-import { ScannerPage } from './pages/ScannerPage';
-import { HeatmapPage } from './pages/HeatmapPage';
-import { CalculatorPage } from './pages/CalculatorPage';
-import { HistoryPage } from './pages/HistoryPage';
-import { ConsultationPage } from './pages/ConsultationPage';
-import { KnowledgeCenterPage } from './pages/KnowledgeCenterPage';
-import { AdminDashboardPage } from './pages/AdminDashboardPage';
+import {
+  ForgotPasswordPage,
+} from './pages/ForgotPasswordPage';
 
-import { LuSprout } from 'react-icons/lu';
+import {
+  ProfilePage,
+} from './pages/ProfilePage';
+
+import {
+  FarmerPage,
+} from './pages/FarmerPage';
+
+import {
+  FarmManagementPage,
+} from './pages/FarmManagementPage';
+
+import {
+  CropManagementPage,
+} from './pages/CropManagementPage';
+
+import {
+  ExtensionPage,
+} from './pages/ExtensionPage';
+
+import {
+  ExpertPage,
+} from './pages/ExpertPage';
+
+import {
+  OfficialPage,
+} from './pages/OfficialPage';
+
+import {
+  ScannerPage,
+} from './pages/ScannerPage';
+
+import {
+  HeatmapPage,
+} from './pages/HeatmapPage';
+
+import {
+  CalculatorPage,
+} from './pages/CalculatorPage';
+
+import {
+  HistoryPage,
+} from './pages/HistoryPage';
+
+import {
+  ConsultationPage,
+} from './pages/ConsultationPage';
+
+import {
+  KnowledgeCenterPage,
+} from './pages/KnowledgeCenterPage';
+
+import {
+  AdminDashboardPage,
+} from './pages/AdminDashboardPage';
+
+import {
+  LuSprout,
+} from 'react-icons/lu';
 
 
 /* ============================================================
@@ -50,13 +105,13 @@ const ProtectedRoute = ({
   allowedRoles = [],
   requireAuth = false,
 }) => {
+
   const {
     isAuthenticated,
     activeRole,
     roleConfig,
   } = useApp();
 
-  const location = useLocation();
 
   /* ----------------------------------------------------------
      Authentication check
@@ -70,9 +125,6 @@ const ProtectedRoute = ({
       <Navigate
         to="/login"
         replace
-        state={{
-          from: location.pathname,
-        }}
       />
     );
   }
@@ -84,7 +136,9 @@ const ProtectedRoute = ({
 
   if (
     allowedRoles.length > 0 &&
-    !allowedRoles.includes(activeRole)
+    !allowedRoles.includes(
+      activeRole
+    )
   ) {
     return (
       <Navigate
@@ -107,17 +161,22 @@ const ProtectedRoute = ({
    ============================================================ */
 
 export function App() {
+
   return (
     <AppProvider>
+
       <ScanProvider>
 
-        <Router>
+        <Router
+          basename="/ByteHarvest"
+        >
 
           <div
             className="min-h-screen flex flex-col"
             style={{
               background:
                 'var(--bg-canvas)',
+
               color:
                 'var(--text-primary)',
             }}
@@ -426,6 +485,7 @@ export function App() {
               style={{
                 borderTop:
                   '1px solid var(--border-base)',
+
                 background:
                   'var(--bg-surface)',
               }}
@@ -456,6 +516,7 @@ export function App() {
 
                   <LuSprout className="w-4 h-4 text-green-600" />
 
+
                   <span
                     className="font-semibold"
                     style={{
@@ -465,6 +526,7 @@ export function App() {
                   >
                     ByteHarvest
                   </span>
+
 
                   <span>
                     Crop Disease &amp; Outbreak Intelligence Platform
@@ -496,8 +558,10 @@ export function App() {
         </Router>
 
       </ScanProvider>
+
     </AppProvider>
   );
 }
+
 
 export default App;
