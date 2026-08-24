@@ -5,13 +5,15 @@ import tailwindcss from '@tailwindcss/vite';
 // https://vite.dev/config/
 export default defineConfig({
   /*
-   * GitHub Pages USER SITE:
+   * GitHub Pages PROJECT SITE
    *
-   * https://borys-08.github.io/
+   * Repository:
+   * ByteHarvest
    *
-   * Therefore the base path is "/".
+   * Published URL:
+   * https://borys-08.github.io/ByteHarvest/
    */
-  base: '/',
+  base: '/ByteHarvest/',
 
   plugins: [
     react(),
