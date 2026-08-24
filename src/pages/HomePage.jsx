@@ -667,11 +667,10 @@ const getTeamImagePosition = (
     'Tripathi Poonam'
   ) {
     /*
-     * Poonam's portrait has the subject
-     * positioned differently inside the
-     * source image, so move the crop upward.
+     * Keep Poonam's face centered while
+     * the transform below zooms the portrait out.
      */
-    return 'center 25%';
+    return 'center center';
   }
 
   return 'center center';
@@ -1062,6 +1061,12 @@ export const HomePage = () => {
                             getTeamImagePosition(
                               member.name
                             ),
+
+                          transform:
+                            member.name ===
+                            'Tripathi Poonam'
+                              ? 'scale(0.78)'
+                              : 'scale(1)',
                         }}
                         loading="lazy"
                         onError={(e) => {
