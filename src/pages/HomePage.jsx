@@ -158,7 +158,7 @@ const homeTranslations = {
         specialty:
           'Model Deployment',
         image:
-          '/team/rana_yash.jpg',
+          `${import.meta.env.BASE_URL}team/yash.jpg`,
       },
 
       {
@@ -168,7 +168,7 @@ const homeTranslations = {
         specialty:
           'UI/UX Design',
         image:
-          '/team/patel_vedish.jpg',
+          `${import.meta.env.BASE_URL}team/patel_vedish.jpg`,
       },
 
       {
@@ -178,7 +178,7 @@ const homeTranslations = {
         specialty:
           'API & Database Management',
         image:
-          '/team/shah_aum.jpg',
+          `${import.meta.env.BASE_URL}team/shah_aum.jpg`,
       },
 
       {
@@ -188,7 +188,7 @@ const homeTranslations = {
         specialty:
           'Agronomy',
         image:
-          '/team/shah_devansh.jpg',
+          `${import.meta.env.BASE_URL}team/shah_devansh.jpg`,
       },
 
       {
@@ -198,7 +198,7 @@ const homeTranslations = {
         specialty:
           'Crop Data & Case Studies',
         image:
-          '/team/ved_rohit.jpg',
+          `${import.meta.env.BASE_URL}team/ved_rohit.jpg`,
       },
 
       {
@@ -208,7 +208,7 @@ const homeTranslations = {
         specialty:
           'Farmer Surveys & Field Insights',
         image:
-          '/team/tripathi_poonam.jpg',
+          `${import.meta.env.BASE_URL}team/tripathi_poonam.jpg`,
       },
     ],
   },
@@ -366,7 +366,7 @@ const homeTranslations = {
         specialty:
           'मॉडल परिनियोजन',
         image:
-          '/team/rana_yash.jpg',
+          `${import.meta.env.BASE_URL}team/yash.jpg`,
       },
 
       {
@@ -376,7 +376,7 @@ const homeTranslations = {
         specialty:
           'UI/UX डिजाइन',
         image:
-          '/team/patel_vedish.jpg',
+          `${import.meta.env.BASE_URL}team/patel_vedish.jpg`,
       },
 
       {
@@ -386,7 +386,7 @@ const homeTranslations = {
         specialty:
           'API और डेटाबेस प्रबंधन',
         image:
-          '/team/shah_aum.jpg',
+          `${import.meta.env.BASE_URL}team/shah_aum.jpg`,
       },
 
       {
@@ -396,7 +396,7 @@ const homeTranslations = {
         specialty:
           'कृषि विज्ञान',
         image:
-          '/team/shah_devansh.jpg',
+          `${import.meta.env.BASE_URL}team/shah_devansh.jpg`,
       },
 
       {
@@ -406,7 +406,7 @@ const homeTranslations = {
         specialty:
           'फसल डेटा और केस स्टडी',
         image:
-          '/team/ved_rohit.jpg',
+          `${import.meta.env.BASE_URL}team/ved_rohit.jpg`,
       },
 
       {
@@ -416,7 +416,7 @@ const homeTranslations = {
         specialty:
           'किसान सर्वे और फील्ड जानकारी',
         image:
-          '/team/tripathi_poonam.jpg',
+          `${import.meta.env.BASE_URL}team/tripathi_poonam.jpg`,
       },
     ],
   },
@@ -574,7 +574,7 @@ const homeTranslations = {
         specialty:
           'मॉडेल डिप्लॉयमेंट',
         image:
-          '/team/yash.jpg',
+          `${import.meta.env.BASE_URL}team/yash.jpg`,
       },
 
       {
@@ -584,7 +584,7 @@ const homeTranslations = {
         specialty:
           'UI/UX डिझाइन',
         image:
-          '/team/patel_vedish.jpg',
+          `${import.meta.env.BASE_URL}team/patel_vedish.jpg`,
       },
 
       {
@@ -594,7 +594,7 @@ const homeTranslations = {
         specialty:
           'API आणि डेटाबेस व्यवस्थापन',
         image:
-          '/team/shah_aum.jpg',
+          `${import.meta.env.BASE_URL}team/shah_aum.jpg`,
       },
 
       {
@@ -604,7 +604,7 @@ const homeTranslations = {
         specialty:
           'कृषीशास्त्र',
         image:
-          '/team/shah_devansh.jpg',
+          `${import.meta.env.BASE_URL}team/shah_devansh.jpg`,
       },
 
       {
@@ -614,7 +614,7 @@ const homeTranslations = {
         specialty:
           'पीक डेटा आणि केस स्टडी',
         image:
-          '/team/ved_rohit.jpg',
+          `${import.meta.env.BASE_URL}team/ved_rohit.jpg`,
       },
 
       {
@@ -624,7 +624,7 @@ const homeTranslations = {
         specialty:
           'शेतकरी सर्वेक्षण आणि फील्ड माहिती',
         image:
-          '/team/tripathi_poonam.jpg',
+          `${import.meta.env.BASE_URL}team/tripathi_poonam.jpg`,
       },
     ],
   },
@@ -668,6 +668,7 @@ export const HomePage = () => {
     language,
   } = useApp();
 
+
   const text =
     homeTranslations[language] ||
     homeTranslations.en;
@@ -686,6 +687,7 @@ export const HomePage = () => {
           currentUser.role?.toUpperCase()
         ]?.defaultRoute ||
         '/farmer';
+
 
       navigate(target);
 
