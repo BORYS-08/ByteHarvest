@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+
   workflow_dispatch:
 
 permissions:
@@ -24,8 +25,18 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+
+      # ========================================================
+      # CHECKOUT
+      # ========================================================
+
       - name: Checkout
         uses: actions/checkout@v4
+
+
+      # ========================================================
+      # NODE
+      # ========================================================
 
       - name: Setup Node
         uses: actions/setup-node@v4
@@ -33,19 +44,65 @@ jobs:
           node-version: lts/*
           cache: npm
 
+
+      # ========================================================
+      # INSTALL DEPENDENCIES
+      # ========================================================
+
       - name: Install dependencies
         run: npm ci
+
+
+      # ========================================================
+      # BUILD VITE APP
+      # ========================================================
 
       - name: Build
         run: npm run build
 
+
+      # ========================================================
+      # REACT ROUTER SPA FALLBACK
+      # ========================================================
+      #
+      # GitHub Pages serves static files. When a user refreshes
+      # a React Router route such as:
+      #
+      # /farmer
+      # /scanner
+      # /admin
+      #
+      # GitHub Pages may otherwise return 404.
+      #
+      # This creates a 404.html containing the same React app
+      # so the client-side router can handle the route.
+      #
+
+      - name: Create SPA fallback
+        run: cp dist/index.html dist/404.html
+
+
+      # ========================================================
+      # SETUP GITHUB PAGES
+      # ========================================================
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
+
+
+      # ========================================================
+      # UPLOAD BUILD ARTIFACT
+      # ========================================================
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
           path: ./dist
+
+
+      # ========================================================
+      # DEPLOY
+      # ========================================================
 
       - name: Deploy
         id: deployment

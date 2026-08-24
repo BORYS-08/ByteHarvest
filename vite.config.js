@@ -1,10 +1,17 @@
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
-import tailwindcss from '@tailwindcss/vite'
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
 
 // https://vite.dev/config/
 export default defineConfig({
-  base: '/ByteHarvest/',
+  /*
+   * GitHub Pages USER SITE:
+   *
+   * https://borys-08.github.io/
+   *
+   * Therefore the base path is "/".
+   */
+  base: '/',
 
   plugins: [
     react(),
@@ -15,16 +22,20 @@ export default defineConfig({
     rollupOptions: {
       output: {
         manualChunks(id) {
-          if (id.includes('node_modules')) {
+          if (
+            id.includes('node_modules')
+          ) {
             if (
               id.includes('leaflet') ||
               id.includes('react-leaflet')
             ) {
-              return 'vendor-maps'
+              return 'vendor-maps';
             }
 
-            if (id.includes('react-icons')) {
-              return 'vendor-icons'
+            if (
+              id.includes('react-icons')
+            ) {
+              return 'vendor-icons';
             }
 
             if (
@@ -32,7 +43,7 @@ export default defineConfig({
               id.includes('react-dom') ||
               id.includes('react-router-dom')
             ) {
-              return 'vendor-react'
+              return 'vendor-react';
             }
           }
         },
@@ -43,4 +54,4 @@ export default defineConfig({
   server: {
     host: true,
   },
-})
+});
