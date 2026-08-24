@@ -574,7 +574,7 @@ const homeTranslations = {
         specialty:
           'मॉडेल डिप्लॉयमेंट',
         image:
-          '/team/rana_yash.jpg',
+          '/team/yash.jpg',
       },
 
       {
