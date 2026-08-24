@@ -655,6 +655,30 @@ const getInitials = (name) => {
 
 
 /* ============================================================
+   TEAM IMAGE POSITION
+   ============================================================ */
+
+const getTeamImagePosition = (
+  memberName
+) => {
+
+  if (
+    memberName ===
+    'Tripathi Poonam'
+  ) {
+    /*
+     * Poonam's portrait has the subject
+     * positioned differently inside the
+     * source image, so move the crop upward.
+     */
+    return 'center 25%';
+  }
+
+  return 'center center';
+};
+
+
+/* ============================================================
    HOME PAGE
    ============================================================ */
 
@@ -989,7 +1013,7 @@ export const HomePage = () => {
           </div>
 
 
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-10 gap-y-8">
 
             {
               text.teamMembers.map(
@@ -999,10 +1023,26 @@ export const HomePage = () => {
                     key={
                       member.name
                     }
-                    className="flex items-center gap-3"
+                    className="flex items-start gap-4 min-h-[72px]"
                   >
 
-                    <div className="w-11 h-11 rounded-full overflow-hidden bg-(--bg-raised) border border-(--border-base) shrink-0 relative">
+                    {/* =================================================
+                        TEAM PHOTO
+                    ================================================== */}
+
+                    <div
+                      className="
+                        w-12
+                        h-12
+                        rounded-full
+                        overflow-hidden
+                        bg-(--bg-raised)
+                        border
+                        border-(--border-base)
+                        shrink-0
+                        relative
+                      "
+                    >
 
                       <img
                         src={
@@ -1011,20 +1051,32 @@ export const HomePage = () => {
                         alt={
                           member.name
                         }
-                        className="w-full h-full object-cover"
+                        className="
+                          w-full
+                          h-full
+                          object-cover
+                          object-center
+                        "
+                        style={{
+                          objectPosition:
+                            getTeamImagePosition(
+                              member.name
+                            ),
+                        }}
                         loading="lazy"
                         onError={(e) => {
 
                           e.currentTarget.style.display =
                             'none';
 
+                          const fallback =
+                            e.currentTarget
+                              .nextElementSibling;
+
                           if (
-                            e.currentTarget
-                              .nextSibling
+                            fallback
                           ) {
-                            e.currentTarget
-                              .nextSibling
-                              .style.display =
+                            fallback.style.display =
                               'flex';
                           }
 
@@ -1032,7 +1084,20 @@ export const HomePage = () => {
                       />
 
 
-                      <div className="hidden w-full h-full bg-green-100 items-center justify-center">
+                      {/* =================================================
+                          IMAGE FALLBACK
+                      ================================================== */}
+
+                      <div
+                        className="
+                          hidden
+                          absolute
+                          inset-0
+                          bg-green-100
+                          items-center
+                          justify-center
+                        "
+                      >
 
                         <span className="text-sm text-green-700 font-bold">
                           {
@@ -1047,23 +1112,54 @@ export const HomePage = () => {
                     </div>
 
 
-                    <div className="space-y-0.5 min-w-0">
+                    {/* =================================================
+                        MEMBER INFO
+                    ================================================== */}
 
-                      <p className="text-base font-semibold text-(--text-primary) truncate">
+                    <div
+                      className="
+                        min-w-0
+                        flex-1
+                        pt-0.5
+                      "
+                    >
+
+                      <p
+                        className="
+                          text-base
+                          font-semibold
+                          leading-tight
+                          text-(--text-primary)
+                        "
+                      >
                         {
                           member.name
                         }
                       </p>
 
 
-                      <p className="text-sm text-green-700/90 leading-tight truncate">
+                      <p
+                        className="
+                          text-sm
+                          leading-tight
+                          mt-1
+                          text-green-700/90
+                        "
+                      >
                         {
                           member.role
                         }
                       </p>
 
 
-                      <p className="text-sm text-(--text-tertiary) truncate">
+                      <p
+                        className="
+                          text-sm
+                          leading-tight
+                          mt-1
+                          text-(--text-tertiary)
+                        "
+                      >
                         {
                           member.specialty
                         }
